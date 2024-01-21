@@ -1,0 +1,679 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Mentally Unstable Detective Robot</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="62b78cce-1bfb-4f06-b6ca-c9c48bb36679" class="page sans"><header><img class="page-cover-image" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/board.png" style="object-position:center 82.78%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🕵️‍♀️</span></div><h1 class="page-title">Mentally Unstable Detective Robot</h1><p class="page-description"></p><table class="properties"><tbody><tr class="property-row property-row-url"><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesUrl"><path d="M7.69922 10.8945L8.73828 9.84863C7.91797 9.77344 7.34375 9.51367 6.91992 9.08984C5.76465 7.93457 5.76465 6.29395 6.91309 5.14551L9.18262 2.87598C10.3379 1.7207 11.9717 1.7207 13.127 2.87598C14.2891 4.04492 14.2822 5.67188 13.1338 6.82031L11.958 7.99609C12.1768 8.49512 12.2451 9.10352 12.1289 9.62988L14.0908 7.6748C15.7725 6 15.7793 3.62109 14.084 1.92578C12.3887 0.223633 10.0098 0.237305 8.33496 1.91211L5.95605 4.29785C4.28125 5.97266 4.26758 8.35156 5.96289 10.0469C6.36621 10.4434 6.90625 10.7441 7.69922 10.8945ZM8.30078 5.13184L7.26855 6.17773C8.08203 6.25293 8.66309 6.51953 9.08008 6.93652C10.2422 8.09863 10.2422 9.73242 9.08691 10.8809L6.81738 13.1504C5.66211 14.3057 4.03516 14.3057 2.87305 13.1504C1.71094 11.9883 1.71777 10.3545 2.87305 9.20605L4.04199 8.03027C3.83008 7.53125 3.75488 6.92969 3.87109 6.39648L1.91602 8.35156C0.234375 10.0264 0.227539 12.4121 1.92285 14.1074C3.61816 15.8027 5.99707 15.7891 7.67188 14.1143L10.0439 11.7354C11.7256 10.0537 11.7324 7.6748 10.0371 5.98633C9.64062 5.58301 9.10059 5.28223 8.30078 5.13184Z"></path></svg></span>Link</th><td><a href="https://github.com/tonyli2/M.U.D._AI" class="url-value">https://github.com/tonyli2/M.U.D._AI</a></td></tr></tbody></table></header><div class="page-body"><h1 id="3d7aa5cd-1a6f-49b0-b341-9a614f25feb1" class="">0. Preview Video</h1><figure id="567a6de6-804e-4dea-b8d9-1d484bba55e1"><div class="source"><a href="https://drive.google.com/file/d/1egfBfJ-tnRxA_MUKlBeggUbosrm3eO04/view?usp=sharing">https://drive.google.com/file/d/1egfBfJ-tnRxA_MUKlBeggUbosrm3eO04/view?usp=sharing</a></div></figure><h1 id="551c35d6-1bfa-4f9e-88c3-584ecc0003f9" class="">1. Project Background</h1><p id="30ae4f00-4dc8-4eda-9c91-ae0aaf8e5058" class="">This project emerged as the collaborative effort of Hunter Ma and myself for the Engineering Physics 353 (ENPH 353) Machine Learning Competition. ENPH 353 is a course that introduces the fundamental concepts of machine learning to students via a hands-on, self-directed, competition. In this contest, a randomized famous individual has been murdered, and students are tasked with creating a Gazebo Simulated autonomous robot detective, which not only self-navigates the simulation environment but interacts with it as well to solve this mystery. The detective will be tasked with driving around the simulation roadways (while avoiding pedestrians and other vehicles) and will read sign boards off the side of the road which contain hints as to who committed the murder and why. Once the detective robot reads the text on each signboard, it will communicate what it believes it reads to a score tracker. The score tracker will compare the predicted text to the actual ground truth clue on each board and distribute points for correct answers. In the end, the score tracker will utilize the Chat-GPT API to generate an overarching summary of the murder case with the clues gathered. </p><figure id="4b1886e3-fd4b-496c-abae-1d0573a3d2bc" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled.png"><img style="width:1002px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled.png"/></a><figcaption>Figure 1: An image that showcases the entire annotated map of the competition</figcaption></figure><h2 id="3ccd595b-a425-46d2-9a3a-4f2b77fe6873" class="">1.1 Goals</h2><p id="9fc8434c-221d-48f5-9408-0949aff4c39b" class="">We were tasked with figuring out how to utilize the machine learning paradigms we recently learned to solve this murder mystery. From the competition rules and regulations, we determined the following primary design goals:</p><ol type="1" id="67cf6b76-a2d2-49db-8db8-6e568e5b28d9" class="numbered-list" start="1"><li>Create a machine-learning model that can drive within the lines of the road and follow traffic laws</li></ol><ol type="1" id="740f7684-f164-4cdd-a806-bdacce04243d" class="numbered-list" start="2"><li>Using Classical Computer Vision, create an algorithm to look for and accurately capture sign boards from the dash-cam of the robot</li></ol><ol type="1" id="86923692-ab9b-4542-a497-5fb182931e7c" class="numbered-list" start="3"><li>Determine an algorithm that takes a captured sign board and parses its text to create several smaller images containing a single letter each</li></ol><ol type="1" id="793498e4-6c12-44b2-98d1-c3682dffd3f0" class="numbered-list" start="4"><li>Create a machine learning model that takes an image with a single letter in it and outputs its String representation</li></ol><h2 id="d8baef02-ddd5-48b5-a58d-6b16e5bc024c" class="">1.2 Team composition</h2><p id="329aefd9-229d-42fc-a2c6-697fdd3d9b07" class="">This challenge consisted of two parts: the largest task was the design of an autonomous driving vehicle. The second large task was the clue board detection. I was in charge of the creation, design, and implementation of the autonomous driving portion of this project. Later in the project, software integration was completed together between Hunter and I. Below, I have highlighted my work:</p><ul id="dae709cd-17b5-45ef-8677-1f86ff05ed55" class="bulleted-list"><li style="list-style-type:disc">Designed, Created, and Trained the Imitation Learning Model for Autonomous Vehicle Navigation in the following sections<ul id="c78ee3b8-1e85-4115-811b-0069dcff44a9" class="bulleted-list"><li style="list-style-type:circle">Suburban Road<figure id="6a0d41a8-d2f9-4b1b-86bb-534b102e36d7" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%201.png"><img style="width:336px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%201.png"/></a><figcaption>Figure 2: Image showing the Suburban Road portion of the competition</figcaption></figure></li></ul><ul id="d1c6c9e0-7604-4c4b-b223-7ea86c1654ca" class="bulleted-list"><li style="list-style-type:circle">Forest Path<figure id="78e8d9e0-6f74-4d92-b0e9-310048f1e5fb" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%202.png"><img style="width:432px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%202.png"/></a><figcaption>Figure 3: Image showing the Forest Path portion of the competition</figcaption></figure></li></ul><ul id="a85a6ead-a593-4aac-b33a-4abd493a80d2" class="bulleted-list"><li style="list-style-type:circle">Mountain Trail<figure id="e8d81806-e6e7-467b-af43-83ed48ffaafb" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%203.png"><img style="width:288px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%203.png"/></a><figcaption>Figure 4: Image showing the mountain trail portion of the competition</figcaption></figure></li></ul></li></ul><ul id="d1649cc9-88d3-42c8-adea-097e01359d21" class="bulleted-list"><li style="list-style-type:disc"> Designed and Created the PID control loop for the Autonomous Navigation of the Off-Road section with Baby Yoda<figure id="02244f04-cb10-4cae-827f-9fb688afab7c" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%204.png"><img style="width:1503px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%204.png"/></a><figcaption>Figure 5: Image showing Baby Yoda in its natural Gazebo Simulation<strong> </strong>habitat</figcaption></figure></li></ul><ul id="4b07a6dd-f014-4e5f-969e-1c9f90719b30" class="bulleted-list"><li style="list-style-type:disc">Co-Designed the Pedestrian Detection paradigm<figure id="4bc357b0-8a3c-4636-8751-e57834f7de53" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%205.png"><img style="width:743px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%205.png"/></a><figcaption>Figure 6: Image showing the pedestrian crosswalk where competitors must obey pedestrian-traffic laws</figcaption></figure></li></ul><ul id="2eb9d068-e5c1-46fb-ba73-586acd86f4bd" class="bulleted-list"><li style="list-style-type:disc">Co-Designed the driving mode transition algorithms<ul id="175c80d8-0211-4d9f-a4dc-a1d16821828b" class="bulleted-list"><li style="list-style-type:circle">We had three different CNNs: one for navigation on each of the Road, Forest, and Mountain. An algorithm was necessary for detecting when the car transitioned from one part of the track to the next and swapping in the appropriate model.</li></ul></li></ul><h2 id="516b55ec-ba21-4e34-9d81-4799ef6db64c" class="">1.3 Project Organization</h2><p id="64f53c11-dc3e-4830-8208-b5df9a066527" class="">For team workflow and management/organization of the project tasks and objectives, we used <a href="https://linear.app/">Linear</a>. With Linear, the team was able to coordinate and parallelize the workflow at every part of the project by creating tickets and visually representing the work needed for each task. The figure below showcases what the project board looked like a few days before the competition:</p><figure id="094ce49b-5907-479d-a4b6-b4b284b57ab9" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%206.png"><img style="width:672px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%206.png"/></a><figcaption>Figure 7: All tickets in Linear a couple of days before the competition</figcaption></figure><h2 id="183121e4-066a-42f2-8e60-b18a63dfcb91" class="">1.4 Software Architecture</h2><p id="4d20d79c-16d0-4fa8-8ec1-5c38398075d6" class="">The figure below shows the overall software architecture of this project. The pink shapes represent all four preset ROS topics that were used to communicate with the detective car. The two essential components, autonomous driving, and clue board detection form the left and right graphs respectively.</p><figure id="a241b542-ae5e-4437-9477-f0e094917835" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/ENPH_353_competition.jpg"><img style="width:3070px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/ENPH_353_competition.jpg"/></a><figcaption>Figure 8: Diagram showcasing the software architecture</figcaption></figure><h1 id="d53e5c58-1140-4057-87cc-139312ac5356" class="">2. Autonomous Driving</h1><h2 id="d71c549b-d12e-4867-b84e-ee4d7769a161" class="">2.1 Overview</h2><p id="64b466a3-cdc3-4ba9-ad8c-925e04a0e761" class="">Imitation Learning is the Paradigm used to create a self-driving car. In this, I created CNNs which take in images from the dash-cam of the robot at every instance and outputs a corresponding Twist Message. This Twist Message is a movement command which controls the navigation of the car and the CNN predicts each movement so as to keep the car on the road. </p><p id="0b925557-4948-4557-828f-55c0fcca07d0" class="">To navigate three different locations: the Road, Forest Path, and Mountain Trail I trained three different CNNs which are swapped in or out at different points in the track (only one is active at a time).</p><h2 id="7fdf9eaa-1202-47c3-a008-e7de563ed3b5" class="">2.2 Training</h2><p id="586ed0d4-62ef-4b68-81a8-a080d81bd69f" class="">To start, I wrote an algorithm which saves a photo of what the dash-cam sees every time I manually send a movement command to the car. Using this, I began to drive through the track manually myself to gather training data for the CNN. Each piece of training “data” contains a single snapshot of the car’s perspective (dash-cam perspective), as well as how I, the human, moved the car accordingly at each location. From this, it is clear that “Imitation Learning” is aptly named so because the Neural Network is essentially imitating human behavior during training. For example, the CNN will be shown a given situation in the form of a dash-cam image and told that at this instance, the human operator decided to turn left, or right, etc. And as such, the machine will begin to imitate how I, as the human, drives in the simulation.</p><p id="67e24308-0c13-4ef1-b896-b0c281a0b5ad" class="">The images are stored with the name of each image being the associated twist command in the following format “T_{UUID}_LX_{Linear X value}_AZ_{Angular Z value}” where the UUID is the current time since the epoch in milliseconds. We only use Linear X and Angular Z velocities since they are the only relevant Twist Command values: Linear X controls moving forward or backward, and Angular Z controls turning left or right.</p><p id="2c4b0751-3195-4172-94d2-23f6c5311abd" class="">After training data is gathered, we get image names like in the figure below. In this example, these two image names indicate that when the CNN sees these particular images it should stop moving forward (LX = 0.0) and not rotate (AZ = 0.0):</p><figure id="f25569ca-626f-438c-88ae-f4bdb8fe9697" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%207.png"><img style="width:344px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%207.png"/></a><figcaption>Figure 9: Naming convention for training images</figcaption></figure><h3 id="c0ab248a-0ae6-40b4-a485-1d60695069b8" class="">2.2a) Suburban Roads Training</h3><p id="dc9e974c-7583-4611-b69b-f4d5fbd2e688" class="">Now I could have simply passed the raw, unprocessed, dash-cam image of the simulation to the CNN during training. However, to reduce the amount of training data needed as well as to simplify the process I decided on pre-processing all the images gathered from training before feeding it into the model. Since each portion of the track varies in appearance, the pre-processing is different for each. I will start by showing you how I dealt with images from the Suburban Road as below: </p><figure id="24374bb0-c68a-4c29-a0aa-5860883ac533" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%208.png"><img style="width:789px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%208.png"/></a><figcaption>Figure 10: Results of image processing done on the Road portion of the track</figcaption></figure><p id="86706f9e-7dfb-4f36-b7b4-7aab1272adfe" class="">Here we isolate just the road by looking for dark pixels, gray-scale the image, and finally resize it down before passing it on. The One-hot Encoded training data for the Road is shown below, where the second element of the vector corresponds to a forward and left movement:</p><figure id="1341e6e0-3349-4b58-b696-7b4a2056f109" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%209.png"><img style="width:492px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%209.png"/></a><figcaption>Figure 11: Labelled training image of the Road portion of the track. Here the CNN is told that in this position, it should drive forwards while curving leftward</figcaption></figure><p id="3bf29421-9a54-45d1-90f1-0a5e7a6c96b6" class="">I then gathered about 2000 images from me manually driving around the Road section; I then dumped the images into Google Colab and used TensorFlow to train a model here: <a href="https://colab.research.google.com/drive/1sgN84zdWF4gUQ0hgTvK0qLc4ESuR91wQ?usp=sharing">Suburban Roads Imitation Model</a>.</p><p id="14a393ea-1bf7-44e7-a874-4ce77975db66" class="">The Model Training and Evaluation Loss over epochs came out as such:</p><figure id="cf153969-37c2-45c0-a8ab-c9e172ef1bee" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2010.png"><img style="width:561px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2010.png"/></a><figcaption>Figure 12: Roads Model Training and Evaluation Loss plotted across 60 Training Epochs </figcaption></figure><p id="a5729b03-a145-41a2-b6f8-699d733addb2" class="">This plot is characteristic for an overfitting problem. To resolve this I could have either fed the model more training data, reduced the number of parameters in the CNN, or increased the Dropout percentage prior to the Dense layers. However, despite this obvious overfitting problem, the model performed spectacularly on the track and I did not need to change anything. Out of the numerous run-throughs like the one below, the model never got lost or went off road.</p><figure id="a86e5a08-4abe-46d7-b87f-c9aef6cb2803"><div class="source"><a href="https://drive.google.com/file/d/1JC8P-1aRBaw4nr9Fdout8GHVBbB9ISaJ/view?usp=sharing">https://drive.google.com/file/d/1JC8P-1aRBaw4nr9Fdout8GHVBbB9ISaJ/view?usp=sharing</a></div></figure><p id="de94cabc-f171-4ddf-87cc-ebc3dba47135" class="">The video above was taken before I implemented Pedestrian Detection, and so you can see how despite the car colliding with our pedestrian, it manages to recover (the pedestrian’s inertia was turned up much higher than the cars, hence why the car gets pushed around). So its stellar performance and the fact that we were on a time crunch before the competition, made me decide to leave the model as is. </p><p id="dc74c23c-cbd7-4241-9d5c-e65209348393" class="">As a final word on the Road, I suspect that the model was able to perform well despite the plot shown previously, primarily due to the fact that the pre-processing simplifies the images that the CNN sees significantly. Furthermore, there is little deviation on what “path” the car can take on the Road. Which is to say, our problem was simple enough that we did not need a “perfect model”. However, if, for example, we placed the car off the road to start, it would not know how to get back onto the road.  </p><h3 id="374618a8-ac2e-4e03-96fb-90f05b63d910" class="">2.2b) Forest Path Training</h3><p id="a0093568-bd04-40ed-b503-dc516fc55b3a" class="">For the Forest Path, the pre-processing was very challenging, far more than it was for the Roads. This is because, unlike the roads, I cannot just simply apply a binary mask for dark gray. This is because the Forest Path look like this:</p><figure id="672d8bab-b460-4adf-a395-23824b46f74e" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2011.png"><img style="width:870px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2011.png"/></a><figcaption>Figure 13: Raw car-perspective of the Forest Path</figcaption></figure><p id="f38d9000-e983-4b65-8da2-5943c7ba39c3" class="">To show you why the Forest Path being this color is an issue, I will take you through my trial-and-error process: now, my initial thoughts were to filter for the white strips that outline the road, however, that ended up looking like this:</p><p id="db51e84e-993e-4e36-a129-7010c57a8c51" class=""> </p><figure id="b1ddff3d-df18-4cc0-b684-249214af635d" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2012.png"><img style="width:603px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2012.png"/></a><figcaption>Figure 14: Forest Path processed image in an attempt to highlight only the road boundaries (outlined in green) on the left and right of the path </figcaption></figure><p id="07ec1d84-fdf8-43f4-a89f-e426dd2fbaf8" class="">As you can see there is an unacceptable amount of noise/residuals which appear because the floor of the Forest Path intrinsically posses a white color. My next thoughts were “that’s okay, lets filter for only the top two largest contours since that will obviously give us our road boundaries”. Nope, that did not work as we sometimes get such large blobs of noise (as below) that it overtakes one of the two road boundaries.</p><figure id="520117a3-1f54-4985-9ed5-96dddff0ea16" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2013.png"><img style="width:657px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2013.png"/></a><figcaption>Figure 15: Example image of pre-processing done at the Forest Path which filters for only the top three largest contours; as you can see, the noise contour in the middle would posses a larger area than the left road boundary</figcaption></figure><p id="eca741f6-4c4b-407b-98e8-60de57c3bdb2" class="">So how could we filter out the noise, and only isolate for the road boundaries? I spent over 24 hours stuck on this issue, with all of my attempts ending in frustration. I will not go into depth about this whole ordeal here as it would involve many curse words and a lack of professionalism. However, for the curious, below are some photos of my various failures:</p><figure id="49a3ce52-0d95-4b96-9e4c-00ff76d016ce" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2014.png"><img style="width:838px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2014.png"/></a><figcaption>Figure 16: Various pre-processing failures for the Forest Path</figcaption></figure><p id="5e3f8111-2f89-41f5-8039-2b854aebec6d" class="">Before I finally reveal the secrets on how to properly pre-process the image, I have a remark to make: as much as I would love to proudly say “here is the strategy I invented”, I cannot, for that would be disingenuous. This is because to reach this solution, I had to get some hints from a friend and fellow competitor. You see, near the end of my 24 hours of rage, I expressed my frustrations to him while he was also grinding away at this project. Luckily for me, he had just recently cracked the code to isolating the road boundaries. Now, the patterns which can be used to isolate the road boundaries from the noise are actually quite simple. Even now, I am not sure how I completely overlooked them when I was working alone. Regardless, shoutout to Ebrahim.</p><p id="681eaeb3-8d39-433c-8027-fd1ae14e12f4" class="">The first step is exactly what I had done myself: you want to draw boxes around every contour in the image, and remove all contours but those with the five largest boxes. This gets rid of majority of the noise, and you are now left with only three residuals.</p><figure id="8beba487-375c-4da3-af4b-2988ec47c6d4" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2015.png"><img style="width:953px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2015.png"/></a><figcaption>Figure 17: Result of drawing boxes around every contour in the image, and displaying only the five largest boxes and their associated contours. The red line represents the vertical center of the image.</figcaption></figure><p id="1e4cb091-673d-4f26-b287-78d61b802120" class="">Here we can see the first simple, but amazing, pattern. We observe that for most cases, the boxes around the road boundaries will have their top edge closest to the middle row of the frame (the red line). If we chose to remove all but the two contours which are closest to the middle row and left it as is, we could deal with 95% of all images. However, life is not so simple, and there are edge cases which need to be addressed. The figure below is one such edge case, where the contour box being pointed to is actually higher up than the right boundary of the road:</p><figure id="2e3308f0-c535-4f54-ae51-ea2dbce05dee" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2016.png"><img style="width:879px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2016.png"/></a><figcaption>Figure 18: Edge case where the contour of the noise being pointed to has its top edge higher up than the road’s right boundary</figcaption></figure><p id="12dfcf43-32cb-4c6c-a701-6b1a4a5263a0" class="">To deal with this, we introduce a second pattern that we can filter for. Now here’s the important part; instead of drawing just any of the largest 5 contour boxes, we impose a new restriction (one that is elegantly brilliant). Our new restriction is: at least one edge of the contour’s box must touch an edge of the frame. Imposing this restriction gives us exactly what we want:</p><figure id="d486b820-525d-4347-bbab-64faab17844b" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2017.png"><img style="width:877px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2017.png"/></a><figcaption>Figure 19: Results of Forest Path image processing after keeping the two contour boxes which touch the edge of the frame and are also the closest to the middle row of the image</figcaption></figure><p id="52df72e3-a3a4-432d-8c7b-1b064e1e48a8" class="">To show you what the CNN sees in real time, here is a video (it is lengthy so please watch it on 2x):</p><figure id="c19a9314-9398-4043-af94-3f1a6e16edd1"><div class="source"><a href="https://drive.google.com/file/d/1pxHJhkVvFL1clZV-Vb9I-ywirl07Fj0H/view?usp=sharing">https://drive.google.com/file/d/1pxHJhkVvFL1clZV-Vb9I-ywirl07Fj0H/view?usp=sharing</a></div></figure><p id="517561e6-a038-47fe-a719-030314251d03" class="">With this, we can finally escape the world of Computer Vision, and indulge in the magic of Machine Learning. Scaling down the processed images and one-hot encoding them, we pass them to the Forest Path CNN like so:</p><figure id="183573c9-9783-4bce-9978-21555d09e131" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2018.png"><img style="width:964px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2018.png"/></a><figcaption>Figure 20: Labelled training image passed to the Forest Path CNN. Here the Neural Network is told that if the car “sees” this it should drive forwards.</figcaption></figure><p id="68c21e8a-41e6-4b1f-9d99-caa37a9546da" class="">Below is an image of the summary of the Forest Path dataset:</p><figure id="8c23b260-208c-4150-9270-63ada7db7b4e" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2019.png"><img style="width:526px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2019.png"/></a><figcaption>Figure 21: Forest Path dataset summary</figcaption></figure><p id="b792ec5e-3839-42c6-abb0-8acc9e1bdcb1" class="">And once again, here is the model Training and Evaluation Loss over epochs. As with the Road, we have an overfitting problem that can be similarly overlooked.</p><figure id="99d344ae-e9a5-42a2-8671-32216c04763f" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2020.png"><img style="width:528px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2020.png"/></a><figcaption>Figure 22: Forest Model Training and Evaluation Loss across 40 Training Epochs</figcaption></figure><p id="5fa679e6-aa91-4b22-a584-6bc0c34d8dff" class="">The Jupyter/Colab Notebook for this Forest Path CNN can be viewed here: <a href="https://colab.research.google.com/drive/1MIM-KYdQnvQRApbWbr3HbLun_9dL0NJ-?usp=sharing">Forest Path Imitation Model</a>. And a short clip of the car navigating this full section is shown below:</p><figure id="6fa38daa-0e1e-4627-97b6-66712d25f311"><div class="source"><a href="https://drive.google.com/file/d/1sZATg9MWozVFrYPgZaWOn3xuEYX-VnfT/view?usp=sharing">https://drive.google.com/file/d/1sZATg9MWozVFrYPgZaWOn3xuEYX-VnfT/view?usp=sharing</a></div></figure><h3 id="abd8b360-de90-42c7-9202-4a01c98abf56" class="">2.2c) Mountain Trail Training</h3><p id="fe17ee3e-943d-4106-8cf9-5e3fd35e9374" class="">Now we get to the last part of the competition, the mountain. The first thing that I noticed here is that due to the height of the mountain, as you traverse around it, the lighting on the ground changes. Meaning some parts of the mountain trail where darker due to the shading (you can see that in Figure 23 below); this made masking the image to get the white boundaries like we did in the Forest a real headache.</p><figure id="3da26110-357b-4c37-b31f-b80e292ac3b0" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/mountain2.png"><img style="width:624px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/mountain2.png"/></a><figcaption>Figure 23: Perspective View of the Mountain Trail</figcaption></figure><p id="2f9481df-c087-43d8-bca5-7bc1303c5586" class="">The first solution that came to mind would be to dynamically changing the threshold values of the mask as we drove around the mountain. This would be done by gray-scaling the image, then taking the average pixel value luminance of the ground. From there, I would use this value to change the mask threshold accordingly. </p><p id="1d5b3c1c-8311-4ace-8fba-5f04eddfe7ec" class="">However, having learned how difficult it is to pre-process images for training with my Forest Trail experiences; I instead decided I would forgo a ton of processing and make the Network do the heavy-lifting. This meant that I would be giving the CNN more complex images, instead of the nicely filtered and simplistic images from previous parts. Specifically, the only processing I did was gray-scale the image, reduce its dimensions by scaling it down and also blacking out the top layer of the image (since I only wanted the CNN to focus on the ground). Below is an example of what this looks like: </p><figure id="56de0952-7721-4799-b8ba-31a4aac07ae1" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2021.png"><img style="width:881px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2021.png"/></a><figcaption>Figure 24: Image showcasing the minimalistic processing done on Mountain Trail images</figcaption></figure><p id="2515e5e5-b726-4029-a78f-a0d2b6b4db1f" class="">Due to the simple pre-processing, to get a model which performs equal to those in the previous parts, I had to pass in significantly more training data than I previously did.</p><figure id="a0b4872e-36b0-4b04-90f8-2ed2a8a6a244" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2022.png"><img style="width:432px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2022.png"/></a><figcaption>Figure 25: Mountain Trail dataset summary which has more data than previous datasets for either the Road or Forest</figcaption></figure><p id="57fe79a7-6e2d-4069-b83e-0606db0d7d56" class="">With the one-hot encoded training data looking like so:</p><figure id="41f267ff-b6ff-4378-adfc-444bef467270" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2023.png"><img style="width:624px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2023.png"/></a><figcaption>Figure 26: Labelled training image passed to the Mountain Trail CNN.</figcaption></figure><p id="29d68179-419d-4ab8-8d49-a9ba074596e9" class="">As usual, here&#x27;s our loss for the training and evaluation sets:</p><figure id="ada81212-0d25-4c57-80ca-27f235e6ca94" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2024.png"><img style="width:576px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2024.png"/></a><figcaption>Figure 27: Mountain Trail Training and Evaluation Loss across 50 Training Epochs</figcaption></figure><p id="f734bb2b-eef9-42a7-a385-7184ec23bbf8" class="">For the curious, you may view the Jupyter/Colab Notebook here: <a href="https://colab.research.google.com/drive/14nV2XFo_CPLClSUnCZa867Z2zCgNoY7G?usp=sharing">Mountain Trail Imitation Model</a></p><p id="e59aa786-165a-4f74-a24c-1e3c352b2d93" class="">
+</p><h2 id="c9af6a45-0e12-4724-9ea1-3f8ca7661801" class="">2.3 Framework Inspirations</h2><p id="3c17e0e4-2c15-426f-9bc0-9c10f0ec986d" class="">The framework for the Imitation Learning Model was inspired by Reference 1: <em>“End to end learning for self-driving cars”.</em> I used roughly the same CNN layers with some changes. Specifically, I added a 2D MaxPooling layer and changed the number of neurons in the first Dense layer from over 1000 to just 256. </p><figure id="03a26fcb-dbc9-4ff4-af7a-3fe160fd81bf" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2025.png"><img style="width:528px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2025.png"/></a><figcaption>Figure 28: Image showing Imitation Learning Model Architecture</figcaption></figure><h2 id="823dbf9d-7a3f-490a-9d08-8888810b2e3b" class="">2.4 Baby Yoda PID</h2><figure id="23a883d7-8655-4b95-9867-0e3b3ec34fa5" class="image"><a href="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2026.png"><img style="width:624px" src="Mentally%20Unstable%20Detective%20Robot%2062b78cce1bfb4f06b6cac9c48bb36679/Untitled%2026.png"/></a><figcaption>Figure 29: Perspective View of the Baby Yoda section of the track</figcaption></figure><p id="2604622a-e1b3-4d20-8ecf-3c7c48ab2f0e" class="">Now those that have been paying attention would have noticed that </p><p id="2ad4dc03-f24a-41bd-8e14-e6f15e0032c2" class="">To get past Baby Yoda, we have to use 3 PID control loops. The steps we took to complete this section are outlined below:</p><ol type="1" id="a7861bc3-896c-4dd4-80d9-015417a84054" class="numbered-list" start="1"><li>To ensure we start at the same position every time we have a filter which looks only for the pink strip at the start of the Baby Yoda portion. The result is shown in Figure 24.</li></ol><ol type="1" id="a2a57c9d-09a6-4542-89d6-61d143f00fcc" class="numbered-list" start="2"><li>We then draw a vector which represents the tilt of this pink strip, our first PID control loop will try to minimize the angle that this vector makes with the horizontal. The result is shown in Figure 25. Once the control loop has successfully aligned the car with the pink strip (as in Figure 26), we drive forward.</li></ol><ol type="1" id="f0d3ef9d-dcdf-4d1c-b638-eb723c184260" class="numbered-list" start="3"><li>Once we drive over the pink strip we wait until Baby Yoda stops in front of the car. And once Baby Yoda begins to move we start two PID control loops on it. The first one tries to align Baby Yoda’s horizontal position on the column that is at 3/4 the width of the frame. This control loop will control how much the robot rotates and ultimately what direction the robot drives in. The second one controls the area of the contour box surrounding Baby Yoda over the area of the image. If the value is too low, that means Baby Yoda is far away, and if it is large, it means Baby Yoda is too close. This is showcased in Figure 27 in the appendix.</li></ol><ol type="1" id="7519dfb7-797b-4383-a012-12cbc08d986d" class="numbered-list" start="4"><li>Once we have successfully followed Baby Yoda to the Tunnel, we switch our driving model to the Mountain Trail CNN and continue our Imitation Learning Paradigm</li></ol><h1 id="44486092-1f49-4e0c-bb9e-d0b44fcc0851" class="">3. Conclusion</h1><p id="bf4e66d2-5217-4554-849f-08e4cf2824e9" class="">The overall performance of the robot is satisfactory. We did several test runs with all features turned on and were able to get through most with perfect score (i.e., 57 pts). During competition, the clue board detection CNN model misinterpreted one clue so our final score was 51 pts. Since we are being conservative during driving since we don&#x27;t want to miss any clue boards, we intentionally trained the robot to take 90-degree turns instead of curving through the corners which resulted in slower speed performance in exchange for reliability. This also made our robot very predictable while driving and rarely cause any issues whether when driving straight or making a turn. The clue board detection also worked reliably for most of the part. The combined power of contour and Harris Corner Detection added several layers of security to ensure the images that were fed into the neural network are of good quality. The predictions were also on point most of the time thanks to the augmented training and validation image set.</p><p id="5882de74-fb4d-449d-936e-a413dda75dcb" class="">
+</p><p id="2a69a5fb-c79b-4c55-8da6-00dfb3784bf8" class="">One idea that was attempted but did not work was to use Imitation Learning at the Baby Yoda portion of the track. Prior to this part of the track, all the training images corresponding to the Road and Forest Path were heavily pre-processed and simplistic. As such, it took very little training data to get good results. And since the Baby Yoda portion of the track did not have any thresholds which were both simplistic and also informative, we tried to go with a filter that highlighted the trees in the background, as shown in Figure 28. This is far more complex than the images of the other sections, and as such would have required much more data to train the CNN. However, since we were used to using very few images in both the Road and Forest Models, we gave this new model the same sparse dataset. And it predictably did poorly. We thought that the poor performance of the model which trained on images like in Figure 28 meant that this portion of the track was unsuitable for Imitation Learning. Which is why I went for three PID control loops. In hindsight, after how difficult it was to PID control Baby Yoda, if I could travel back in time, I would re-do this portion with Imitation Learning, and like the Mountain Model, make the CNN do most of the work by supplying it with a large training dataset.</p><p id="2f147a34-8d28-4e39-906b-a099e0c537d2" class="">
+</p><p id="4a42c64e-2ba8-4c62-9090-40af12a22a41" class="">Possible future iterations include improving CNN model performance on both the autonomous driving part as well as the clue board detection part. A more brutal force but reliable way is to simply train with more data set to incorporate as many scenarios as possible. For clue board detection, if a more powerful computer is available to us, we would potentially take images of the clue boards directly from the competition surface which would make the training reflect the actual scenario more accurately. </p><h1 id="18e98582-d884-42f2-97eb-e151a136c119" class="">References</h1><ol type="1" id="28c22c48-bada-4810-854a-363702fa129a" class="numbered-list" start="1"><li>Bojarski, M., Del Testa, D., Dworakowski, D., Firner, B., Flepp, B., Goyal, P., Jackel, L. D., Monfort, M., Muller, U., Zhang, J., Zhang, X., Zhao, J., &amp; Zieba, K. (2016, April 25). <em>End to end learning for self-driving cars</em>. arXiv.org. <a href="https://arxiv.org/pdf/1604.07316.pdf">https://arxiv.org/abs/1604.07316</a> </li></ol></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
